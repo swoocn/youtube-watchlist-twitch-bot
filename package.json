@@ -1,0 +1,37 @@
+{
+  "name": "youtube_watchlist_bot_twitch",
+  "version": "1.0.0",
+  "description": "Twitch bot for recording data for played youtube links.",
+  "main": "src",
+  "scripts": {
+    "start": "node .",
+    "test": "nyc --all mocha \"test/*.spec.js\""
+  },
+  "author": "swoocn",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swoocn/youtube-watchlist-twitch-bot.git"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "dateformat": "^4.5.1",
+    "dotenv": "^10.0.0",
+    "esm": "^3.2.25",
+    "fs": "0.0.1-security",
+    "google-auth-library": "^6.1.0",
+    "googleapis": "^60.0.1",
+    "moment": "^2.29.1",
+    "regenerator-runtime": "^0.13.7",
+    "tmi.js": "^1.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/register": "^7.11.5",
+    "chai": "^4.2.0",
+    "mocha": "^8.1.3",
+    "nyc": "^15.1.0"
+  }
+}
