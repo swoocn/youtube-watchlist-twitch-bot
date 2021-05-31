@@ -32,7 +32,7 @@ import { CLIENT_ID, CLIENT_SECRET, GET_TOKEN_URL, SEARCH_CHANNEL_URL } from './c
  */
  export const getStreamStarted = (accessToken, channel, callback) => {
     const streamOptions = {
-        url: `${SEARCH_CHANNEL_URL} isthrine`,
+        url: `${SEARCH_CHANNEL_URL} ${channel}`,
         method: 'GET',
         json: true,
         headers: {
@@ -53,7 +53,7 @@ import { CLIENT_ID, CLIENT_SECRET, GET_TOKEN_URL, SEARCH_CHANNEL_URL } from './c
 
             // search collection for exact channel name
             for (var i = 0; i < response.body.data.length; i++) {
-                if (response.body.data[i].broadcaster_login.toLowerCase() === 'isthrine') {
+                if (response.body.data[i].broadcaster_login.toLowerCase() === channel) {
                     streamStartedAt = response.body.data[i].started_at;
                     break;
                 }
