@@ -7,6 +7,7 @@ import {
     BOT_USERNAME,
     TMI_OAUTH_TOKEN,
     CHANNEL_NAME,
+    USER_WHITELIST,
     YOUTUBE_REGEX,
     YOUTUBE_VID_ID_REGEX,
     REQUEST_FILE_PATH,
@@ -52,8 +53,8 @@ client.on("connected", (addr, port) => {
 client.on("message", (target, context, msg, self) => {
   if (self) { return; }
 
-  // only process potential watchlist entries by messages from the broadcaster.
-  if (context['user-id'] == context['room-id']) {
+  // only process potential watchlist entries by messages from whitelisted users.
+  if (context.username == USER_WHITELIST[0] || context.username == USER_WHITELIST[1]) {
     if (new RegExp(YOUTUBE_REGEX).test(msg)) {
         try {
           // extract YouTube link.

@@ -7,6 +7,7 @@ export const CHANNEL_NAME = '[INSERT TWITCH CHANNEL_NAME]';
 export const CLIENT_ID = '[INSERT TWITCH CLIENT_ID]';
 export const CLIENT_SECRET = '[INSERT TWITCH CLIENT_SECRET]';
 export const TMI_OAUTH_TOKEN = '[INSERT TWITCH TMI OAUTH_TOKEN]';
+export const USER_WHITELIST = ['culiculi', 'sadnotsoftt'];
 export const BOT_USERNAME = 'youtube-request-watchlist-twitch-bot';
 export const GET_TOKEN_URL = 'https://id.twitch.tv/oauth2/token';
 export const SEARCH_CHANNEL_URL = 'https://api.twitch.tv/helix/search/channels?query=';
