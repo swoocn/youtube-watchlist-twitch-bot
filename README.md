@@ -32,7 +32,7 @@ Allow for reaction-based Twitch streamers to keep track of youtube links that ha
     <img src="https://user-images.githubusercontent.com/72060658/120233409-bae2c600-c223-11eb-94d7-f905fcd4aff5.png"></img>
 4. Send YouTube links to the Twitch chat box; watchlist items will be recorded if the following conditions are met:
     * YouTube link is valid.
-    * The message with the YouTube link is from the channel broadcaster (user with the same ID as the channel).
+    * The message with the YouTube link is from the channel broadcaster (user with the same ID as the channel) and/ or those whitelisted.
     * The YouTube link exists in the input file.
 
 _output data will be written to both the watchlist file and the backend console._
