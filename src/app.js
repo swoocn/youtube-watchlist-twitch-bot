@@ -60,9 +60,9 @@ client.on("message", (target, context, msg, self) => {
           // extract YouTube link.
           var id = msg.match(YOUTUBE_REGEX);
           // check if the id is in the supplemental youtube_request file.
-          var isRequestFound = readRequestFileFor(id);
-          if (isRequestFound) {
-            writeToWaitlistFileFor(context, id);
+          var requestData = readRequestFileFor(id);
+          if (requestData != null) {
+            writeToWaitlistFileFor(context, id, requestData);
           }
         } catch (err) {
             console.log(`unable to process message: ${msg}; -> ${err}`);
@@ -92,12 +92,25 @@ var requestTwitchData = () => {
 };
 
 var readRequestFileFor = (id) => {
-    return fs.readFileSync(REQUEST_FILE_PATH).includes(id[0]);
+    var result = null;
+
+    var data = fs.readFileSync(REQUEST_FILE_PATH, 'UTF8');
+    var lines = data.split('\n');
+
+    // iterate line-by-line through file content to find the YouTube link that was requested.
+    for (var i = 0; i < lines.length; i++) {
+        // extract YouTube link
+        if (lines[i].match(YOUTUBE_REGEX) == id[0]) {
+            result = lines[i].replace(/[\n\r]/g, '');
+            break;
+        }
+    }
+    return result;
 };
 
-var writeToWaitlistFileFor = (context, id) => {
+var writeToWaitlistFileFor = (context, id, requestData) => {
     var result = false;
-    fs.appendFile(WATCHLIST_FILE_PATH, `${id[0]} | [${getWatchedAtDate(streamStartedAt)}] | @${context.username}\n`, (err) => {
+    fs.appendFile(WATCHLIST_FILE_PATH, `${requestData} | [${getWatchedAtDate(streamStartedAt)}] | ${options.channels[0]}\n`, (err) => {
         if (err) throw err;
         console.log(`recorded -> @${id[0]} to watchlist file.`);
         result = true;
